@@ -1,0 +1,65 @@
+
+HTML
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>动物食性判断游戏</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>动物食性判断游戏</h1>
+  </header>
+  <main>
+    <p>请根据以下动物的描述，判断它们是食肉动物、食草动物还是杂食动物：</p>
+    <ul>
+      <li>
+        <div class="animal-image">
+          <img src="images/lion.jpg" alt="狮子">
+        </div>
+        <div class="animal-info">
+          <h2>狮子</h2>
+          <p>狮子是一种大型猫科动物，原产于非洲和亚洲。它们是群居动物，以捕食大型哺乳动物为食。</p>
+          <ul class="answer-options">
+            <li><input type="radio" name="lion" value="carnivore">食肉动物</li>
+            <li><input type="radio" name="lion" value="herbivore">食草动物</li>
+            <li><input type="radio" name="lion" value="omnivore">杂食动物</li>
+          </ul>
+        </div>
+      </li>
+      <li>
+        <div class="animal-image">
+          <img src="images/panda.jpg" alt="熊猫">
+        </div>
+        <div class="animal-info">
+          <h2>熊猫</h2>
+          <p>熊猫是一种大型哺乳动物，原产于中国。它们以竹子为食，是世界自然基金会的标志性物种。</p>
+          <ul class="answer-options">
+            <li><input type="radio" name="panda" value="carnivore">食肉动物</li>
+            <li><input type="radio" name="panda" value="herbivore">食草动物</li>
+            <li><input type="radio" name="panda" value="omnivore">杂食动物</li>
+          </ul>
+        </div>
+      </li>
+      <li>
+        <div class="animal-image">
+          <img src="images/monkey.jpg" alt="猴子">
+        </div>
+        <div class="animal-info">
+          <h2>猴子</h2>
+          <p>猴子是一种灵长类动物，原产于美洲、非洲和亚洲。它们是杂食动物，以水果、坚果、昆虫和小型动物为食。</p>
+          <ul class="answer-options">
+            <li><input type="radio" name="monkey" value="carnivore">食肉动物</li>
+            <li><input type="radio" name="monkey" value="herbivore">食草动物</li>
+            <li><input type="radio" name="monkey" value="omnivore">杂食动物</li>
+          </ul>
+        </div>
+      </li>
+    </ul>
+    <button onclick="checkAnswers()">检查答案</button>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>

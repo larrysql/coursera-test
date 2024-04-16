@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Land Animal Quiz</title>
+</head>
+<style type="text/css">
+    * {
+        box-sizing: border-box;
+    }
+
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        background-color: #f2f2f2;
+    }
+
+    .container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+        margin-bottom: 20px;
+        color: #333;
+        text-align: center;
+    }
+
+    .question {
+        font-size: 24px;
+        margin-bottom: 20px;
+    }
+
+    .options button {
+        display: block;
+        width: 100%;
+        padding: 15px;
+        margin-bottom: 10px;
+        font-size: 16px;
+        background-color: #000;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    .options button:hover {
+        background-color: #333;
+    }
+
+    .result {
+        font-size: 20px;
+        margin-top: 20px;
+    }
+</style>
+<body>
+
+<audio id="audio" src="img/interface-124464.mp3"></audio>
+
+<div class="container">
+    <h1>Land Animal Quiz</h1>
+    <div class="question" id="question"></div>
+    <div class="options" id="options"></div>
+    <div class="result" id="result"></div>
+</div>
+
+<script>
+    const questions = [
+        {
+            question: "Which animal is known as the 'King of the Jungle'?",
+            options: ["Tiger", "Lion", "Elephant", "Giraffe"],
+            answer: "Lion"
+        },
+        {
+            question: "Which animal is the largest member of the cat family?",
+            options: ["Lion", "Tiger", "Leopard", "Cheetah"],
+            answer: "Tiger"
+        },
+        {
+            question: "Which animal is known for its solitary nature and distinctive black mane?",
+            options: ["Tiger", "Lion", "Jaguar", "Leopard"],
+            answer: "Jaguar"
+        },
+        {
+            question: "Which animal is the national symbol of India?",
+            options: ["Elephant", "Tiger", "Lion", "Leopard"],
+            answer: "Tiger"
+        },
+        {
+            question: "Which animal is known for its endurance and ability to run long distances?",
+            options: ["Tiger", "Lion", "Leopard", "Cheetah"],
+            answer: "Cheetah"
+        },
+        {
+            question: "Which animal has the scientific name 'Panthera leo'?",
+            options: ["Tiger", "Lion", "Jaguar", "Leopard"],
+            answer: "Lion"
+        },
+        {
+            question: "Which animal has the highest bite force among big cats?",
+            options: ["Lion", "Tiger", "Jaguar", "Leopard"],
+            answer: "Jaguar"
+        },
+        {
+            question: "Which animal is known for its ability to mimic human speech?",
+            options: ["Tiger", "Lion", "Jaguar", "Leopard"],
+            answer: "Jaguar"
+        },
+        {
+            question: "Which animal is known for its strong sense of smell and ability to climb trees?",
+            options: ["Tiger", "Lion", "Jaguar", "Leopard"],
+            answer: "Leopard"
+        }
+    ];
+
+    let currentQuestion = 0;
+    let score = 0;
+
+    function displayQuestion() {
+        const questionElement = document.getElementById('question');
+        const optionsElement = document.getElementById('options');
+
+        questionElement.textContent = questions[currentQuestion].question;
+
+        optionsElement.innerHTML = '';
+
+        questions[currentQuestion].options.forEach((option) => {
+            const button = document.createElement('button');
+            button.textContent = option;
+            button.onclick = () => selectAnswer(option);
+            optionsElement.appendChild(button);
+        });
+    }
+
+    function selectAnswer(selectedOption) {
+        const correctAnswer = questions[currentQuestion].answer;
+        const resultElement = document.getElementById('result');
+        const audio = document.getElementById('audio');
+
+        if (selectedOption === correctAnswer) {
+            score += 100 / questions.length;
+            audio.play(); // 播放音频
+            resultElement.textContent = "Correct!";
+        } else {
+            resultElement.textContent = "Incorrect. The correct answer is: " + correctAnswer;
+            audio.play(); // 播放音频
+        }
+
+        currentQuestion++;
+
+        if (currentQuestion < questions.length) {
+            setTimeout(displayQuestion, 1000);
+        } else {
+            resultElement.textContent = "Quiz Complete! Your Score: " + Math.round(score) + "/100";
+        }
+    }
+
+    function startQuiz() {
+        currentQuestion = 0;
+        score = 0;
+        displayQuestion();0
+    }
+
+    window.onload = startQuiz;
+</script>
+
+</body>
+</html>
